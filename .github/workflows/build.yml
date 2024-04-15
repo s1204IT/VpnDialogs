@@ -1,6 +1,9 @@
 name: Build
 
-on: [ push, pull_request ]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -24,15 +27,19 @@ jobs:
           path: |
             ~/.gradle/caches/
             ~/.gradle/wrapper/
+            ./.gradle/
           key: ${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
 
       - name: Build with Gradle
         run: |
           ./gradlew assemble --no-daemon
-          echo "commit=$(echo ${{ github.sha }} | cut -c-7)" >> $GITHUB_ENV
+          {
+            echo "commit=$(echo ${{ github.sha }} | cut -c-7)"
+            echo "repo=$(echo ${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/})"
+          } >> $GITHUB_ENV
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: VpnDialogs(${{ env.commit }})
+          name: ${{ env.repo }}@${{ env.commit }}
           path: app/build/outputs/apk/**/app-*.apk

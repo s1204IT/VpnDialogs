@@ -4,15 +4,17 @@ pluginManagement {
         mavenCentral()
     }
     plugins {
-        id("com.android.application") version '8.3.0'
-        id("com.android.library") version '8.3.0'
+        id 'com.android.application' version '8.3.2'
+        id 'com.android.library' version '8.3.2'
     }
 }
+
 dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
     }
 }
-rootProject.name = "VpnDialogs"
-include(":app", ":hidden", ":stub", ":bridge")
+
+rootProject.name = 'VpnDialogs'
+include ':app', 'hidden', 'stub', 'bridge'

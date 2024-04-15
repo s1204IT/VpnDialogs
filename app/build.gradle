@@ -5,7 +5,6 @@ plugins {
 android {
     namespace 'com.android.vpndialogs'
     compileSdk 33
-    buildToolsVersion '34.0.0'
 
     defaultConfig {
         minSdk 33
@@ -26,14 +25,12 @@ android {
     }
 
     buildTypes {
-        debug {
-            minifyEnabled false
+        configureEach {
             signingConfig signingConfigs.android
         }
         release {
             minifyEnabled true
             shrinkResources true
-            signingConfig signingConfigs.android
         }
     }
 
