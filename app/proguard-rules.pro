@@ -1,1 +1,3 @@
--ignorewarnings
+-keep class com.android.vpndialogs.* { <init>(); }
+-keepattributes LineNumberTable,SourceFile
+-renamesourcefileattribute SourceFile

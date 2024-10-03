@@ -38,6 +38,7 @@ jobs:
           name: ${{ env.repo }}@${{ env.commit }}
           path: |
             app/build/outputs/apk/**/app-*.apk
+            app/build/outputs/mapping/release/*.txt
             hidden/build/outputs/aar/hidden-*.aar
             bridge/build/libs/bridge.jar
             stub/build/libs/stub.jar
