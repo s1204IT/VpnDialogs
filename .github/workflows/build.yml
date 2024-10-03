@@ -15,20 +15,14 @@ jobs:
       - name: Check out
         uses: actions/checkout@v4
 
-      - name: Set up JDK
+      - name: Setup JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches/
-            ~/.gradle/wrapper/
-            ./.gradle/
-          key: ${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
 
       - name: Build with Gradle
         run: |
@@ -42,4 +36,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.repo }}@${{ env.commit }}
-          path: app/build/outputs/apk/**/app-*.apk
+          path: |
+            app/build/outputs/apk/**/app-*.apk
+            hidden/build/outputs/aar/hidden-*.aar
+            bridge/build/libs/bridge.jar
+            stub/build/libs/stub.jar
