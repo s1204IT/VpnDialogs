@@ -1,14 +1,14 @@
 package com.android.vpndialogs;
 
-import static com.android.vpndialogs.Constant.ALWAYS_ON_VPN_APP;
-import static com.android.vpndialogs.Constant.TYPE_VPN_SERVICE;
+import static org.lsposed.wsa.vpndialogs.Constant.ALWAYS_ON_VPN_APP;
+import static org.lsposed.wsa.vpndialogs.Constant.TYPE_VPN_SERVICE;
 
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.net.VpnManager;
 import android.os.Bundle;
-import android.os.UserManager;
+//import android.os.UserManager;
 import android.provider.Settings;
 import android.text.Html;
 import android.text.Html.ImageGetter;
@@ -52,12 +52,12 @@ public class ConfirmDialog extends AlertActivity
             finish();
             return;
         }
+        /*
         if (getSystemService(UserManager.class).hasUserRestriction(UserManager.DISALLOW_CONFIG_VPN)) {
-            Log.e(TAG, "User restriction: disallowed configuring a VPN");
-            Log.w(TAG, "Ignore restriction");
-//            finish();
-//            return;
+            finish();
+            return;
         }
+        */
         final String alwaysOnVpnPackage = Settings.Secure.getString(getContentResolver(), ALWAYS_ON_VPN_APP);
         // Can't prepare new vpn app when another vpn is always-on
         if (alwaysOnVpnPackage != null && !alwaysOnVpnPackage.equals(mPackage)) {

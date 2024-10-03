@@ -1,4 +1,4 @@
-package com.android.vpndialogs;
+package org.lsposed.wsa.vpndialogs;
 
 public class Constant {
     public static final int SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS = 0x00080000;

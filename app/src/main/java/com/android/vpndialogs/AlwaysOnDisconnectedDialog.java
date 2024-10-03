@@ -1,8 +1,8 @@
 package com.android.vpndialogs;
 
 import static android.view.WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM;
-import static com.android.vpndialogs.Constant.ALWAYS_ON_VPN_APP;
-import static com.android.vpndialogs.Constant.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
+import static org.lsposed.wsa.vpndialogs.Constant.ALWAYS_ON_VPN_APP;
+import static org.lsposed.wsa.vpndialogs.Constant.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
 
 import android.content.DialogInterface;
 import android.content.Intent;

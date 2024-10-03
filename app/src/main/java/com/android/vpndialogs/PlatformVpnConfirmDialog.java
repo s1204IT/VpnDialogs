@@ -1,6 +1,6 @@
 package com.android.vpndialogs;
 
-import static com.android.vpndialogs.Constant.TYPE_VPN_PLATFORM;
+import static org.lsposed.wsa.vpndialogs.Constant.TYPE_VPN_PLATFORM;
 
 public class PlatformVpnConfirmDialog extends ConfirmDialog {
     public PlatformVpnConfirmDialog() {
