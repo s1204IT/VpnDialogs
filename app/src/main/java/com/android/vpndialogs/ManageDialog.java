@@ -60,11 +60,14 @@ public class ManageDialog extends AlertActivity implements
             mDataReceived = view.findViewById(R.id.data_received);
             mDataRowsHidden = true;
 
+            mAlertParams.mTitle = mConfig.legacy ? getText(R.string.legacy_title) : VpnConfig.getVpnLabel(this, mConfig.user);
+            /*
             if (mConfig.legacy) {
                 mAlertParams.mTitle = getText(R.string.legacy_title);
             } else {
                 mAlertParams.mTitle = VpnConfig.getVpnLabel(this, mConfig.user);
             }
+            */
             if (mConfig.configureIntent != null) {
                 mAlertParams.mPositiveButtonText = getText(R.string.configure);
                 mAlertParams.mPositiveButtonListener = this;
@@ -101,11 +104,14 @@ public class ManageDialog extends AlertActivity implements
                 mConfig.configureIntent.send();
             } else if (which == DialogInterface.BUTTON_NEUTRAL) {
                 final int myUserId = Bridge.UserHandle_myUserId();
+                Bridge.VpnManager_prepareVpn(mVm, mConfig.legacy ? VpnConfig.LEGACY_VPN : mConfig.user, VpnConfig.LEGACY_VPN, myUserId);
+                /*
                 if (mConfig.legacy) {
                     Bridge.VpnManager_prepareVpn(mVm, VpnConfig.LEGACY_VPN, VpnConfig.LEGACY_VPN, myUserId);
                 } else {
                     Bridge.VpnManager_prepareVpn(mVm, mConfig.user, VpnConfig.LEGACY_VPN, myUserId);
                 }
+                */
             }
         } catch (Exception e) {
             Log.e(TAG, "onClick", e);

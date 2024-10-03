@@ -1,6 +1,7 @@
 package com.android.vpndialogs;
 
 import static org.lsposed.wsa.vpndialogs.Constant.ALWAYS_ON_VPN_APP;
+import static org.lsposed.wsa.vpndialogs.Constant.SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS;
 import static org.lsposed.wsa.vpndialogs.Constant.TYPE_VPN_SERVICE;
 
 import android.content.DialogInterface;
@@ -76,7 +77,6 @@ public class ConfirmDialog extends AlertActivity
         setupAlert();
 
         Bridge.Window_setCloseOnTouchOutside(getWindow(), false);
-        int SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS = 0x00080000;
         Bridge.Window_addPrivateFlags(getWindow(), SYSTEM_FLAG_HIDE_NON_SYSTEM_OVERLAY_WINDOWS);
         Button button = mAlert.getButton(DialogInterface.BUTTON_POSITIVE);
         button.setFilterTouchesWhenObscured(true);
